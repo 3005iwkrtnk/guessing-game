@@ -1,6 +1,28 @@
-[gd_scene load_steps=2 format=3 uid="uid://bbnhnicgkr14v"]
+[gd_scene load_steps=3 format=3 uid="uid://bbnhnicgkr14v"]
 
-[ext_resource type="Script" uid="uid://ohk081bbd154" path="res://scripts/teste.gd" id="1_q4sgw"]
+[ext_resource type="Script" uid="uid://ddqhldio86le7" path="res://scripts/guessing-game-script.gd" id="1_0hmiu"]
+[ext_resource type="Texture2D" uid="uid://b2v5ugj0jxcn7" path="res://assets/images/360_F_566029808_X7praimuCQt0MsLCmw5d65Pp5KqmTS8e.jpg" id="1_q4sgw"]
 
-[node name="Rng" type="Node2D"]
-script = ExtResource("1_q4sgw")
+[node name="Node" type="Node"]
+script = ExtResource("1_0hmiu")
+
+[node name="Camera2D" type="Camera2D" parent="."]
+
+[node name="Game Backdrop" type="Sprite2D" parent="."]
+texture = ExtResource("1_q4sgw")
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="Panel" type="Panel" parent="CanvasLayer"]
+offset_top = 27.0
+offset_right = 1.0
+offset_bottom = 27.0
+
+[node name="GridContainer" type="GridContainer" parent="CanvasLayer"]
+offset_left = -22.0
+offset_top = -16.0
+offset_right = 18.0
+offset_bottom = 24.0
+
+[node name="Label" type="Label" parent="CanvasLayer/GridContainer"]
+layout_mode = 2

@@ -14,3 +14,8 @@ config/name="Guessing game"
 run/main_scene="res://scenes/rng.tscn"
 config/features=PackedStringArray("4.4", "Forward Plus")
 config/icon="res://icon.svg"
+
+[display]
+
+window/size/viewport_width=1920
+window/size/viewport_height=1080
