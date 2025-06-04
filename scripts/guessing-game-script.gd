@@ -10,10 +10,11 @@ var rng = RandomNumberGenerator.new()
 
 var scene_number = rng.randi_range(10, 10)
 
-
 var half_number = int(scene_number / 2)
 
 var continues = 5
+
+# Handles the numbers and continues
 
 
 func _on_line_edit_text_submitted(new_text: String) -> void:
@@ -31,20 +32,30 @@ func _on_line_edit_text_submitted(new_text: String) -> void:
 		continues = continues -1
 		continues_display.text = 'A little, too much? Perhaps... Continues: ' + str(continues)
 	if continues <= 0:
+		button_visibility()
 		continues_display.text = "The Cheese, chees’ndt. Good luck next time!"
 
 
-#func button_visibility():
-	
 
+
+
+
+
+# Restarts the game
+func _on_button_pressed() -> void:
+	get_tree().reload_current_scene()
+	
+	
+# Button visibility
+
+func _ready():
+	button_visibility()
+
+# Hides the button when the player have continues
 
 
 func button_visibility():
-	if continues >= 0:
-		Button.visible = false
-	while continues <= 0:
-		Button.visible = true
-
-
-func _on_button_pressed() -> void:
-	get_tree().reload_current_scene()
+	if continues > 0:
+		button.hide()
+	else:
+		button.show()
