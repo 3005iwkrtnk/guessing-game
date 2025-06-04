@@ -10,16 +10,18 @@ var player_number = 5
 
 var half_number = int(scene_number / 2)
 
-# Debug
+var continues = 5
 
 func _ready():
 	rng.randomize()
 	if player_number != scene_number:
-		label.text = "player_number: " + str(player_number) + " scene_number: " + str(scene_number)
+		continues = -1
+		label.text = 'Yikes! Continues:' + str(continues)
 	if player_number == scene_number:
-		label.text = 'Sucess!: ' + str(scene_number)
-	if player_number == half_number:
+		label.text = 'Sucess!: '
+	if player_number <= half_number:
 			label.text = 'Almost there!'
-	
+	if player_number >= half_number:
+		label.text = 'A little, too much? Perhaps ...'
 	
 	
