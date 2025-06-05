@@ -1,14 +1,14 @@
 extends Node
 
 
-@onready var continues_display: Label = $"CanvasLayer/Continues Container/Continues display"
+@onready var continues_display: Label = $"CanvasLayer/Continues Container/MarginContainer/GridContainer/Continues display"
 @onready var line_edit: LineEdit = $LineEdit
 @onready var button: Button = $Button
 
 
 var rng = RandomNumberGenerator.new()
 
-var scene_number = rng.randi_range(10, 10)
+var scene_number = rng.randi_range(1, 25)
 
 var half_number = int(scene_number / 2)
 
@@ -32,7 +32,7 @@ func _on_line_edit_text_submitted(new_text: String) -> void:
 		continues = continues -1
 		continues_display.text = 'A little, too much? Perhaps... Continues: ' + str(continues)
 	if continues <= 0:
-		button_visibility()
+		button_visibility() # Calls the function everytime the player runs out of continues
 		continues_display.text = "The Cheese, chees’ndt. Good luck next time!"
 
 
@@ -52,7 +52,6 @@ func _ready():
 	button_visibility()
 
 # Hides the button when the player have continues
-
 
 func button_visibility():
 	if continues > 0:

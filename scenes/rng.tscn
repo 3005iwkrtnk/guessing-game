@@ -18,7 +18,7 @@ position = Vector2(3, 0)
 zoom = Vector2(1.5, 1.5)
 
 [node name="White screen" type="Sprite2D" parent="."]
-position = Vector2(-0.999985, -2.99999)
+position = Vector2(-20, -7)
 scale = Vector2(5.84589, 4.35859)
 texture = ExtResource("2_qqg40")
 
@@ -36,17 +36,14 @@ theme = ExtResource("3_oi4sk")
 
 [node name="MarginContainer" type="MarginContainer" parent="Cheese display"]
 layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 0
 theme_override_constants/margin_left = 20
 theme_override_constants/margin_right = 20
 theme_override_constants/margin_bottom = 5
 
 [node name="GridContainer" type="GridContainer" parent="Cheese display/MarginContainer"]
 layout_mode = 2
-
-[node name="Panel" type="Panel" parent="Cheese display/MarginContainer/GridContainer"]
-layout_mode = 2
-theme = SubResource("Theme_0hmiu")
-theme_override_styles/panel = SubResource("StyleBoxFlat_oi4sk")
 
 [node name="cheese times" type="Label" parent="Cheese display/MarginContainer/GridContainer"]
 layout_mode = 2
@@ -55,22 +52,36 @@ text = "How many times the Cheese, will cheese?"
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
 [node name="Continues Container" type="PanelContainer" parent="CanvasLayer"]
-offset_left = 428.0
-offset_top = 952.0
-offset_right = 748.0
-offset_bottom = 1006.0
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -251.0
+offset_top = -82.0
+offset_right = 251.0
+offset_bottom = -41.0
+grow_horizontal = 2
+grow_vertical = 0
 theme = ExtResource("3_oi4sk")
 
-[node name="GridContainer" type="GridContainer" parent="CanvasLayer/Continues Container"]
+[node name="MarginContainer" type="MarginContainer" parent="CanvasLayer/Continues Container"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 8
+
+[node name="GridContainer" type="GridContainer" parent="CanvasLayer/Continues Container/MarginContainer"]
 layout_mode = 2
 
-[node name="Panel2" type="Panel" parent="CanvasLayer/Continues Container"]
+[node name="Panel2" type="Panel" parent="CanvasLayer/Continues Container/MarginContainer/GridContainer"]
 layout_mode = 2
 theme = SubResource("Theme_0hmiu")
 theme_override_styles/panel = SubResource("StyleBoxFlat_oi4sk")
 
-[node name="Continues display" type="Label" parent="CanvasLayer/Continues Container"]
+[node name="Continues display" type="Label" parent="CanvasLayer/Continues Container/MarginContainer/GridContainer"]
 layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 8
 
 [node name="LineEdit" type="LineEdit" parent="."]
 offset_left = -126.0
