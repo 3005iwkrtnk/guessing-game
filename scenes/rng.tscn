@@ -1,6 +1,85 @@
-[gd_scene load_steps=2 format=3 uid="uid://bbnhnicgkr14v"]
+[gd_scene load_steps=5 format=3 uid="uid://bbnhnicgkr14v"]
 
-[ext_resource type="Script" uid="uid://ohk081bbd154" path="res://scripts/teste.gd" id="1_q4sgw"]
+[ext_resource type="Script" uid="uid://ddqhldio86le7" path="res://scripts/guessing-game-script.gd" id="1_0hmiu"]
+[ext_resource type="Texture2D" uid="uid://b2v5ugj0jxcn7" path="res://assets/images/360_F_566029808_X7praimuCQt0MsLCmw5d65Pp5KqmTS8e.jpg" id="1_q4sgw"]
+[ext_resource type="Texture2D" uid="uid://b4fqt1eiedhc5" path="res://assets/images/images.png" id="2_qqg40"]
+[ext_resource type="Theme" uid="uid://fw03hml0xftc" path="res://our_theme.tres" id="3_oi4sk"]
 
-[node name="Rng" type="Node2D"]
-script = ExtResource("1_q4sgw")
+[node name="Node" type="Node"]
+script = ExtResource("1_0hmiu")
+
+[node name="White screen" type="Sprite2D" parent="."]
+position = Vector2(953, 538)
+scale = Vector2(9.57, 7.96717)
+texture = ExtResource("2_qqg40")
+
+[node name="Big Cheese" type="Sprite2D" parent="."]
+position = Vector2(960, 543)
+scale = Vector2(1.67753, 1.67753)
+texture = ExtResource("1_q4sgw")
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+follow_viewport_enabled = true
+
+[node name="cheese display" type="PanelContainer" parent="CanvasLayer"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("3_oi4sk")
+
+[node name="MarginContainer" type="MarginContainer" parent="CanvasLayer/cheese display"]
+layout_mode = 2
+
+[node name="VBoxContainer2" type="VBoxContainer" parent="CanvasLayer/cheese display/MarginContainer"]
+layout_mode = 2
+theme_override_constants/separation = 50
+alignment = 1
+
+[node name="cheese times" type="Label" parent="CanvasLayer/cheese display/MarginContainer/VBoxContainer2"]
+layout_mode = 2
+size_flags_horizontal = 4
+text = "How many times the Chesse, will chesse?"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="ContinuesDisplay" type="Label" parent="CanvasLayer/cheese display/MarginContainer/VBoxContainer2"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 4
+theme = ExtResource("3_oi4sk")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer"]
+custom_minimum_size = Vector2(250, 0)
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -125.0
+offset_top = 203.0
+offset_right = 125.0
+offset_bottom = 269.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 4
+size_flags_vertical = 8
+theme_override_constants/separation = 50
+alignment = 1
+
+[node name="LineEdit" type="LineEdit" parent="CanvasLayer/VBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+placeholder_text = "Enter a number!"
+alignment = 1
+clear_button_enabled = true
+
+[node name="Button" type="Button" parent="CanvasLayer/VBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "Try again!"
+
+[connection signal="text_submitted" from="CanvasLayer/VBoxContainer/LineEdit" to="." method="_on_line_edit_text_submitted"]
+[connection signal="pressed" from="CanvasLayer/VBoxContainer/Button" to="." method="_on_button_pressed"]
+[connection signal="visibility_changed" from="CanvasLayer/VBoxContainer/Button" to="." method="_on_button_visibility_changed"]

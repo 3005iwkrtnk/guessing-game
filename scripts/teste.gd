@@ -1,5 +1,6 @@
 extends Node2D
 
+@onready var label: Label = $CanvasLayer/GridContainer/Label
 
 var rng = RandomNumberGenerator.new()
 
@@ -9,16 +10,18 @@ var player_number = 5
 
 var half_number = int(scene_number / 2)
 
-# Debug
+var continues = 5
 
 func _ready():
 	rng.randomize()
 	if player_number != scene_number:
-		print('player_number: ',player_number,' scene_number: ',scene_number)
+		continues = -1
+		label.text = 'Yikes! Continues:' + str(continues)
 	if player_number == scene_number:
-		print('Sucess!: ',scene_number)
-	if player_number == half_number:
-			print('Almost there!')
-	
+		label.text = 'Sucess!: '
+	if player_number <= half_number:
+			label.text = 'Almost there!'
+	if player_number >= half_number:
+		label.text = 'A little, too much? Perhaps ...'
 	
 	
